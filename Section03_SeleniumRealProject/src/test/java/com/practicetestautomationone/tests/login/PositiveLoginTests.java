@@ -41,6 +41,8 @@ public class PositiveLoginTests {
         WebElement LogoutButton = driver.findElement(By.linkText("Log out"));
         Assert.assertTrue(LogoutButton.isDisplayed());
 
+        driver.quit();
+
     }
 
     @Test

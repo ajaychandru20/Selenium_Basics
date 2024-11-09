@@ -1,0 +1,15 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Regression Suite" verbose="1">
+    <test name="Positive Login Test">
+        <classes>
+            <class name="com.practicetestautomationone.tests.login.PositiveLoginTests"/>
+        </classes>
+    </test>
+
+    <test name="Cross Browser Testing">
+        <classes>
+            <class name="com.practicetestautomationone.tests.login.CrossBrowserTests"/>
+        </classes>
+    </test>
+</suite>
