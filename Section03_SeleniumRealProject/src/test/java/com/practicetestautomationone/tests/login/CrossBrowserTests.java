@@ -20,7 +20,8 @@ public class CrossBrowserTests {
     public void testOpenEdgeBrowser(){
         System.setProperty("webdriver.edge.driver","src/main/resources/msedgedriver.exe");
         WebDriver driver = new EdgeDriver();
-        driver.get("https://www.google.com/");
+        LoginTests loginUser = new LoginTests();
+        loginUser.testLoginFunctionPositive();
         driver.quit();
     }
 

@@ -3,7 +3,14 @@
 <suite name="Regression Suite" verbose="1">
     <test name="Positive Login Test">
         <classes>
-            <class name="com.practicetestautomationone.tests.login.PositiveLoginTests"/>
+            <class name="com.practicetestautomationone.tests.login.LoginTests">
+                <methods>
+                    <exclude name="testLoginFunctionPositive">
+                        Ignore the Positive case
+                    </exclude>
+                </methods>
+            </class>
+            
         </classes>
     </test>
 
