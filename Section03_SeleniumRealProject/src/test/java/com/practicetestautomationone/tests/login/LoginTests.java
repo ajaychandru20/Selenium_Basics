@@ -6,18 +6,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginTests {
 
     private  WebDriver driver;
+    private Logger logger;
 
     @BeforeTest(alwaysRun = true)
-    @Parameters("browsers")
-    public void openBrowserTest(String browsers){
+    @Parameters("browser")
+    public void openBrowserTest(@Optional("firefox") String browsers){
+        logger = Logger.getLogger(LoginTests.class.getName());
+        logger.setLevel(Level.INFO);
+        logger.info("Running the browser: " + browsers);
 //    Open page
         switch (browsers.toLowerCase()){
             case "chrome":
@@ -27,6 +31,7 @@ public class LoginTests {
                 driver = new FirefoxDriver();
                 break;
             default:
+                logger.warning("Default browser runs in the Chrome Driver");
                 driver = new ChromeDriver();
                 break;
         }
@@ -44,10 +49,12 @@ public class LoginTests {
 
 //    Type username student into Username field
         WebElement usernameInput = driver.findElement(By.id("username"));
+        logger.info("Type username");
         usernameInput.sendKeys("student");
 
 //    Type password Password123 into Password field
         WebElement password = driver.findElement(By.id("password"));
+        logger.info("Type password");
         password.sendKeys("Password123");
 //    Push Submit button
         WebElement submitButton = driver.findElement(By.id("submit"));
@@ -74,19 +81,25 @@ public class LoginTests {
     @Test(groups = {"regression","negative"})
     public void testLoginWithInvalidUsername() {
         // Open page
+        logger = Logger.getLogger(LoginTests.class.getName());
+        logger.setLevel(Level.INFO);
         WebDriver driver = new ChromeDriver();
         driver.get("https://practicetestautomation.com/practice-test-login/");
 
         // Type username "incorrectUser" into Username field
         WebElement usernameInput = driver.findElement(By.id("username"));
+        logger.info("Incorrect User Type");
         usernameInput.sendKeys("incorrectUser");
 
         // Type password "Password123" into Password field
         WebElement passwordInput = driver.findElement(By.id("password"));
+        logger.info("Incorrect Password Type");
         passwordInput.sendKeys("Password123");
 
         // Push Submit button
         WebElement submitButton = driver.findElement(By.id("submit"));
+//        WebElement submitButton = driver.findElement(By.id("submiteds"));
+        logger.info("Click Submit");
         submitButton.click();
 
         // Verify error message is displayed
