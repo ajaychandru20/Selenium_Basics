@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Debugger Suite" verbose="1">
+    <test name="Debugger Test Suite">
+        <classes>
+            <class name="com.exceptionhandleing.tests.loin.ErrorHandlingTest">
+                <methods>
+                    <include name="testNoSuchElementException"/>
+                </methods>
+            </class>
+<!--            <parameter name="browser" value="chrome"/>-->
+        </classes>
+    </test>
+</suite>
