@@ -5,7 +5,10 @@
         <classes>
             <class name="com.exceptionhandleing.tests.loin.ErrorHandlingTest">
                 <methods>
-                    <include name="testNoSuchElementException"/>
+<!--                    <include name="testNoSuchElementException"/>-->
+<!--                    <include name="testElementNotInteractableException"/>-->
+<!--                    <include name="testInvalidElementStateException"/>-->
+                    <include name="StaleElementReferenceException"/>
                 </methods>
             </class>
 <!--            <parameter name="browser" value="chrome"/>-->
