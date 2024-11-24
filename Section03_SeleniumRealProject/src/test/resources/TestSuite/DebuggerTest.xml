@@ -3,7 +3,7 @@
 <suite name="Debugger Suite" verbose="1">
     <test name="Debugger Test Suite">
         <classes>
-            <class name="com.exceptionhandleing.tests.loin.ErrorHandlingTest">
+            <class name="com.practicetestautomationone.tests.exceptionhandling.ErrorHandlingTest">
                 <methods>
 <!--                    <include name="testNoSuchElementException"/>-->
 <!--                    <include name="testElementNotInteractableException"/>-->
