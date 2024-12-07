@@ -5,10 +5,10 @@
         <classes>
             <class name="com.practicetestautomationone.tests.exceptionhandling.ErrorHandlingTest">
                 <methods>
-<!--                    <include name="testNoSuchElementException"/>-->
+                    <include name="testNoSuchElementException"/>
 <!--                    <include name="testElementNotInteractableException"/>-->
 <!--                    <include name="testInvalidElementStateException"/>-->
-                    <include name="StaleElementReferenceException"/>
+<!--                    <include name="StaleElementReferenceException"/>-->
                 </methods>
             </class>
 <!--            <parameter name="browser" value="chrome"/>-->

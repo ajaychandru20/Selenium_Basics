@@ -1,11 +1,10 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
-<suite name="Regression Suite" verbose="1">
-    <test name="Positive Login Test">
+<suite name="Parameter Testing Suite" verbose="1">
+    <test name="Positive and Negative Login Test">
         <groups>
             <run>
                 <include name="paramatertest">
-
                 </include>
             </run>
         </groups>

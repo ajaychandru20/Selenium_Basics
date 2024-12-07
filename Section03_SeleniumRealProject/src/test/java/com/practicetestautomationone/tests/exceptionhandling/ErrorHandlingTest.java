@@ -1,5 +1,6 @@
 package com.practicetestautomationone.tests.exceptionhandling;
 
+import com.practicetestautomationone.errorhandelpom.ErrorHandel;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,47 +21,41 @@ public class ErrorHandlingTest {
     private Logger logger;
     private WebDriverWait wait;
 
+
     @BeforeTest
-    public void startBrowser(){
+    public void startBrowser() {
         driver = new ChromeDriver();
         logger = Logger.getLogger(ErrorHandlingTest.class.getName());
         logger.setLevel(Level.INFO);
         logger.info("Browser Starts to run");
-        driver.get("https://practicetestautomation.com/practice-test-exceptions/");
-        wait = new WebDriverWait(driver,Duration.ofSeconds(2));
+        ErrorHandel errorHandel = new ErrorHandel(driver);
+        errorHandel.visit();
+        wait = new WebDriverWait(driver, Duration.ofSeconds(2));
 
 
     }
+
     @AfterTest
-    public void closeBrowser(){
-//        driver.quit();
+    public void closeBrowser() {
+        driver.quit();
     }
+
     @Test
-    public void testNoSuchElementException(){
-        WebElement clickAddButton = driver.findElement(By.id("add_btn"));
-        clickAddButton.click();
-
-//        try {
-//            Thread.sleep(7000);
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-
+    public void testNoSuchElementException() {
+        ErrorHandel errorHandel = new ErrorHandel(driver);
+        errorHandel.clickAddButton();
         logger.info("Add Element clicked");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofMillis(3000));
-//        WebElement secondInputField = driver.findElement(By.id("row2"));
-        WebElement secondInputField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("row2")));
-        Assert.assertTrue(secondInputField.isDisplayed());
+        Assert.assertTrue(errorHandel.isRowTwoDisplayed());
     }
 
     @Test
-    public void testElementNotInteractableException(){
+    public void testElementNotInteractableException() {
 
         WebElement clickAddButton = driver.findElement(By.id("add_btn"));
         clickAddButton.click();
         logger.info("Add Element clicked");
 
-        WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(7));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(7));
         WebElement secondRow = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@id='row2']/input")));
         secondRow.sendKeys("2nd Row found, typed Test");
 
@@ -72,8 +67,9 @@ public class ErrorHandlingTest {
         Assert.assertEquals(conformationText, "Row 2 was saved");
 
     }
+
     @Test
-    public void testInvalidElementStateException(){
+    public void testInvalidElementStateException() {
 
         logger.info("Select the Edit button");
 
@@ -97,7 +93,7 @@ public class ErrorHandlingTest {
     }
 
     @Test
-    public void StaleElementReferenceException(){
+    public void StaleElementReferenceException() {
 //        WebElement instructionElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("instructions")));
 
         WebElement clickAddButton = driver.findElement(By.id("add_btn"));
