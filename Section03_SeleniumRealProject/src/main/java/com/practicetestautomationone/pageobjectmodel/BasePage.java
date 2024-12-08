@@ -28,7 +28,7 @@ public class BasePage {
         return driver.getPageSource();
     }
 
-    protected WebElement waitForElement(By locator){
+    public WebElement waitForElement(By locator){
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
@@ -42,6 +42,14 @@ public class BasePage {
     protected boolean waitForIsDisplayed(By locator) {
         try {
             waitForElement(locator);
+            return true;
+        } catch (TimeoutException e) {
+            return false;
+        }
+    }
+    protected boolean waitForIsHidden(By locator) {
+        try {
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(locator));
             return true;
         } catch (TimeoutException e) {
             return false;
