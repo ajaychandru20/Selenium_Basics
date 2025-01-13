@@ -5,9 +5,9 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "featureFiles/OpenGoogle.feature",glue = "stepDefinitions")
-public class RunnerClass {
-
-
-
+@CucumberOptions(
+        features = "featureFiles/TableDataWithHeader.feature",
+        glue = "stepDefinitions"
+)
+public class RunnerTest {
 }
