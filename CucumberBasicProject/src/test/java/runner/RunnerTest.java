@@ -6,8 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "featureFiles/TableDataWithHeader.feature",
+        features = "featureFiles/Options/DryRun.feature",
         glue = "stepDefinitions"
+//        , dryRun = true
 )
 public class RunnerTest {
+
 }
