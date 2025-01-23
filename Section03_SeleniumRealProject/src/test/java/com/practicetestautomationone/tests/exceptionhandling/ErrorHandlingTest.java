@@ -1,34 +1,12 @@
 package com.practicetestautomationone.tests.exceptionhandling;
 
 import com.practicetestautomationone.errorhandelpom.ErrorHandel;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.practicetestautomationone.tests.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
+public class ErrorHandlingTest extends BaseTest {
 
-public class ErrorHandlingTest {
-    private WebDriver driver;
-    private Logger logger;
-    private WebDriverWait wait;
-
-
-    @BeforeTest
-    public void startBrowser() {
-        driver = new ChromeDriver();
-        logger = Logger.getLogger(ErrorHandlingTest.class.getName());
-        logger.setLevel(Level.INFO);
-    }
-
-    @AfterTest
-    public void closeBrowser() {
-        driver.quit();
-    }
 
     @Test
     public void testNoSuchElementException() {
